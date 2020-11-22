@@ -6,6 +6,7 @@ import {
   Link
 } from "react-router-dom";
 import Home from './Components/Home/Home/Home';
+import FullContact from './Components/FullContact/FullContact';
 function App() {
   return (
     <Router>
@@ -15,6 +16,9 @@ function App() {
         </Route>
         <Route path="/home">
           <Home></Home>
+        </Route>
+        <Route path="/contact">
+          <FullContact></FullContact>
         </Route>
       </Switch>
     </Router>

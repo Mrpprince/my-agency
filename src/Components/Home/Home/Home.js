@@ -1,4 +1,5 @@
 import React from 'react';
+import ContactUs from '../ContactUs/ContactUs';
 import HireBody from '../HireBody/HireBody';
 import Media from '../Media/Media';
 import Navbar from '../Navbar/Navbar';
@@ -15,6 +16,7 @@ const Home = () => {
             <div>
                 <Media></Media>
                 <ProvideService></ProvideService>
+                <ContactUs></ContactUs>
             </div>
         </div>
     );
