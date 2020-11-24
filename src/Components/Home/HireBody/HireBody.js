@@ -8,6 +8,7 @@ const HireBody = () => {
                 <div style={{ width: "400px" }} className="col-md-4 col-sm-12">
                     <h1 >Let’s Grow Your
                     Brand To The
+                    <br/>
                     Next Level</h1>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus commodo ipsum duis laoreet maecenas. Feugiat </p>
                     <button style={{ background: "#111430", color: "#fff" }} className="btn btn">Hire Us</button>
