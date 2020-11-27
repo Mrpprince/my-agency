@@ -4,7 +4,7 @@ import ServiceDetails from './ServiceDetails';
 const ServiceList = ({loggedInUser}) => {
     const [clientData, setClientData] = useState([])
     useEffect(()=>{
-        fetch('http://localhost:8080/clientOrder?email='+loggedInUser.email,{
+        fetch('http://localhost:8080/showOrder?email='+loggedInUser.email,{
             method: 'GET',
             headers: {'Content-Type': 'application/json'}
         })

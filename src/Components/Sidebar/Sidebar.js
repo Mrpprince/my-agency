@@ -2,7 +2,7 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingBag, faPeopleCarry, faShoppingBasket, faComment} from '@fortawesome/free-solid-svg-icons';
 // import { faPlusSquare } from '@fortawesome/free-regular-svg-icons';
-const Sidebar = ({handleClient}) => {
+const Sidebar = ({handleClient,handleAdmin}) => {
     return (
         <div>
            <div>
@@ -15,9 +15,9 @@ const Sidebar = ({handleClient}) => {
            </div>
            <div>
                <ol style={{listStyleType:"none"}}>
-                   <li>Service List</li>
-                   <li>Add Service</li>
-                   <li>Make Admin</li>
+                   <li style={{cursor: "pointer",fontWeight:"900",padding:"5px"}} onClick={handleAdmin}>Service List</li>
+                   <li style={{cursor: "pointer",fontWeight:"900",padding:"5px"}} onClick={handleAdmin}>Add Service</li>
+                   <li style={{cursor: "pointer",fontWeight:"900",padding:"5px"}} onClick={handleAdmin}>Make Admin</li>
                </ol>
            </div>
         </div>

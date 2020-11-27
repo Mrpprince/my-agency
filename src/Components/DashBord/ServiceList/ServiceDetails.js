@@ -7,7 +7,7 @@ const ServiceDetails = (props) => {
         <div className="card shadow-sm mt-5 mb-5">
             <div className="card-header">
                     <div className="d-flex justify-content-between">
-                    <img className="mx-3" src={`data:image/png;base64,${image.img}`} alt="" width="60"/>
+                    <img className="mx-3 "  src={`data:image/png;base64,${image.img}`} alt="" width="60"/>
                     {
                         (projectStatus == "Pending") && <p className="projectStatus color1">Pending</p>
                     }

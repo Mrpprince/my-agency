@@ -17,6 +17,8 @@ client.connect(err => {
     const ProvideService = client.db("my-agency").collection("agency");
     const clientReview = client.db("my-agency").collection("review");
     const clientOrder = client.db("my-agency").collection("clientOrder");
+    const makeAdmin = client.db("my-agency").collection("makeAdmin");
+    const userEmail = client.db("my-agency").collection("user");
 
     app.get('/ProvideService', (req, res) => {
 
@@ -24,9 +26,29 @@ client.connect(err => {
             .toArray((err, ProvideService) => {
                 res.send(ProvideService);
             })
-
-
     })
+
+
+    app.post('/ProvideService',(req,res)=>{
+        const file = req.files.file;
+        const description=req.body.description;
+        const title=req.body.title;
+        const newImg = file.data;
+        const encImg = newImg.toString('base64');
+        var image = {
+            contentType: file.mimetype,
+            size: file.size,
+            img: Buffer.from(encImg, 'base64')
+        };
+        ProvideService.insertOne({title,image,description})
+        .then(result => {
+            
+            res.send(result.insertedCount > 0);
+        })
+    })
+
+
+
 
     app.get('/feedback',(req,res)=>{
 
@@ -59,8 +81,18 @@ client.connect(err => {
     })
 
     app.get('/clientOrder',(req,res)=>{
+       
         clientOrder.find({})
         
+        .toArray((err, clientReview) => {
+            res.send(clientReview);
+            
+        })
+    })
+
+    app.get('/showOrder',(req,res)=>{
+        const email=req.body.loggedInUser.email;
+        clientOrder.find({email})
         .toArray((err, clientReview) => {
             res.send(clientReview);
             
@@ -77,6 +109,23 @@ client.connect(err => {
             .then(result => {
                 res.send(result.insertedCount > 0)
             })
+    })
+
+    app.post('/makeAdmin',(req,res)=>{
+        const email=req.body.email;
+        console.log(email);
+        makeAdmin.insertOne({email})
+        .then(result=>{
+            res.send(result.insertedCount>0)
+        })
+    })
+    app.post("/isAdmin",(req,res)=>{
+        const email=req.body.email;
+        console.log(email);
+        makeAdmin.find({email:email})
+        .toArray((err, admin) => {
+            res.send(admin.length>0);
+        })
     })
 });
 
